@@ -1,0 +1,9 @@
+@import "./variable.scss";
+
+.hero {
+    span {
+        border-bottom: 5px solid $accent-color;
+        display: inline-block;
+        line-height: 0.85;
+    }
+}
