@@ -1,5 +1,12 @@
 @import "./variable.scss";
 
+
+/**
+ 8-27 hero
+ 31 latest section
+   42 latest work section
+**/
+
 .hero {
     min-height: 20vh;
     display: flex;
@@ -19,4 +26,35 @@
         overflow: hidden;
         width: 90%;
     }
+}
+
+//Latest
+.latest {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10rem 10rem;
+    width: 90rem;
+    overflow: hidden;
+}
+
+//Latest work
+.latestWork {
+    h1 {
+        font-size: 4.3125rem;
+    }
+}
+
+.latestArticles {
+    h1 {
+        font-size: 4.3125rem;
+    }
+}
+
+.underline:after {
+    content: ""; /* This is necessary for the pseudo element to work. */
+    display: block; /* This will put the pseudo element on its own line. */
+    width: 80%; /* Change this to whatever width you want. */
+    padding-top: 20px; /* This creates some space between the element and the border. */
+    border-bottom: 5px solid $accent-color; /* This creates the border. Replace black with whatever color you want. */
 }

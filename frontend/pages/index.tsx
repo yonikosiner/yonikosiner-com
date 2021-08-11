@@ -19,7 +19,16 @@ export default function Home() {
             </div>
         </div>
      {/* Latest section */}
-     {/* Latest work*/}
+     <div className={style.latest}>
+         {/* Latest work*/}
+         <div className={style.latestWork}>
+             <h1><span className={style.underline}>Latest Work</span></h1>
+         </div>
+         {/* Latest articles*/}
+         <div className={style.latestArticles}>
+            <h1><span className={style.underline}>Latest Articles</span></h1>
+         </div>
+     </div>
     </div>
   );
 };

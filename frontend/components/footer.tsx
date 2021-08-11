@@ -2,38 +2,41 @@ import React, { useEffect, useState } from "react";
 import fetch from "node-fetch";
 import style from "../styles/footer.module.scss";
 
-function tweets() {
+function Tweets() {
     const [tweets, setTweets] = useState([]);
     const [loading, setLoading] = useState(false);
-    useEffect(() => {
-        fetch("/api/twitter")
-        .then((data) => data.json())
-        .then((json) => {
-            setLoading(false);
-            setTweets(json);
-        });
-    }, []);
 
+    useEffect(() => {
+            setLoading(true);
+            fetch("/api/twitter")
+            .then((data) => data.json())
+            .then((json) => {
+                    setLoading(false);
+                    setTweets(json);
+            })
+            .catch((err: Error) => {
+                    err;
+                    setLoading(false);
+                    setTweets([]);
+            });
+            }, []);
     return { tweets, loading }
 };
+
 export default function Footer(): object {
-    const { loading, tweets: tweet} = tweets();
+    const { loading, tweets } = Tweets();
+    console.log(tweets)
+
     return (
         <div className={style.footer}>
             {/*Latest tweets */}
             <div className={style.tweets}>
-            {loading && <p>One sec getting tweets...</p>}
-            {tweet.length ? <h4>tweets</h4> : null}
-            {Array.isArray(tweet) &&
-                tweet.map((t) => {
-                    //@ts-ignore
-                    console.log(t)
-                    return (
-                        //@ts-ignore
-                        <p key={t}>{t.text}</p>
-                    );
-                })
-            }
+                {/*{loading && <p>One sec getting tweets...</p>}
+                {tweets.length ? <h4>tweets</h4> : null}*/}
+                {/*@ts-ignore*/}
+                {/*{tweets.data.map((i) => (
+                    <p key={i}>{i}</p>
+                ))}*/}
             </div>
             {/*Instagram*/}
             <div className={style.instagram}>
