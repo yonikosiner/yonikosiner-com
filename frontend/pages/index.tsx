@@ -4,10 +4,10 @@ import Head from 'next/head'
 export default function Home() {
   return (
     <div>
-    <Head>
-        <title>Yoni Kosiner | Homp Page</title>
-        <meta name="Home page" content="Hey Guys, I'm Yoni." />
-    </Head>
+        <Head>
+            <title>Yoni Kosiner | Homp Page</title>
+            <meta name="Home page" content="Hey Guys, I'm Yoni." />
+        </Head>
     {/* Hero */}
         <div className={style.hero}>
             <div style={{ "fontSize": "2.324rem" }} className={style.text}>

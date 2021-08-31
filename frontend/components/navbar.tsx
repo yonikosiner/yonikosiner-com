@@ -15,19 +15,19 @@ export default function Nav() {
             </div>
             <div className={style.links}>
                 <Link href="/contact">
-                    <a>CONTACT</a>
-                </Link>
-                <Link href="/portfolio">
-                    <a>PORTFOLIO</a>
+                    <a>📇 CONTACT</a>
                 </Link>
                 <Link href="/about">
-                    <a>ABOUT</a>
+                    <a>👨‍💼 ABOUT</a>
+                </Link>
+                <Link href="/portfolio">
+                    <a>💼 PORTFOLIO</a>
                 </Link>
                 <Link href="/book-notes">
-                    <a>BOOK NOTES</a>
+                    <a>📒 BOOK NOTES</a>
                 </Link>
                 <Link href="/topics">
-                    <a>ARTICLES</a>
+                    <a>📝 ARTICLES</a>
                 </Link>
             </div>
         </div>
