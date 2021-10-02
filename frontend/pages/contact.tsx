@@ -1,4 +1,5 @@
 import style from "../styles/contact.module.scss";
+import ContactOther from "../components/contact-ways"
 import Head from 'next/head'
 
 export default function Contact() {
@@ -36,6 +37,8 @@ export default function Contact() {
             </span>
           </form>
         </div>
+        {/*Other ways to get in touch*/}
+        <ContactOther />
     </div>
   );
 };
