@@ -1,0 +1,19 @@
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main {
+    margin: 5rem;
+    font-size: 27px;
+    width: 80%;
+    text-align: justify;
+    color: #333;
+}
+
+@media only screen and (max-width: 1025px) {
+    .main {
+        margin: 2rem;
+    }
+}
