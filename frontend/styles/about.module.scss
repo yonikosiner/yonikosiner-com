@@ -1,1 +1,25 @@
 @import "./variable.scss";
+
+//Hero page
+
+.hero {
+    background: $background-white;
+}
+
+.title {
+    text-align: center;
+}
+
+.workingOn {
+    text-align: center;
+    font-size: 30px;
+}
+
+.desc {
+    display: flex;
+    width: 100%;
+    align-items: left;
+    flex-direction: column;
+    justify-content: left;
+    margin-left: 50px;
+}

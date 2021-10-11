@@ -36,6 +36,5 @@ export default async function handler(
 ) {
     req;
     const tweets = await getTweets();
-    console.log(tweets);
     res.send(tweets);
 };
