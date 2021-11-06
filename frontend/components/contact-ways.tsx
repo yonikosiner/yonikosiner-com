@@ -18,6 +18,7 @@ export default function ContactOther() {
 
         return contactPage;
     };
+
     return (
         <div className={style.center}>
             <div className={style.main}>

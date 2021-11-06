@@ -1,17 +1,17 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import fetch from "node-fetch";
-import dotenv from "dotenv";
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 type tweets = object;
 
-dotenv.config();
+require('dotenv').config();
 
 const cache = {
     lastFetch: 0,
     tweets: [],
 };
 
+//@ts-ignore
 async function getTweets(): Promise<tweets> {
     // first see if we have a cache in 30 mins
     const timeSinceLastFetch = Date.now() - cache.lastFetch;

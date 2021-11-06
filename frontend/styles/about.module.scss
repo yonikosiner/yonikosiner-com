@@ -1,9 +1,14 @@
 @import "./variable.scss";
 
-//Hero page
-
 .hero {
-    background: $background-white;
+    margin: 0 auto;
+    width: 50%;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .title {
@@ -16,10 +21,5 @@
 }
 
 .desc {
-    display: flex;
-    width: 100%;
-    align-items: left;
-    flex-direction: column;
-    justify-content: left;
-    margin-left: 50px;
+    dispaly: none;
 }

@@ -13,25 +13,34 @@ export default function About() {
 
             <AboutHero />
 
-            <div className={style.desc}>
-                <p>Hello my name is Yoni. For the past year and a half I have
-                been creating content to do with coding on <a
-                href="https://instagram.com/kosiner.codes"
-                target="_blank">insatgram</a> and <br/ > and over the past 8
-                months I have been creating <a
-                href="https://www.youtube.com/channel/UCceuqcaS7oAGBYMBEhTyDEQ"
-                target="_blank">YouTube</a> videos</p>
+            <div className={style.center}>
+                <div className={style.desc}>
+                    <p>Hello my name is Yoni. For the past year and a half I have
+                    been creating content to do with coding on <a
+                    href="https://instagram.com/kosiner.codes"
+                    target="_blank">insatgram</a> and <br/ > and over the past 8
+                    months I have been creating <a
+                    href="https://www.youtube.com/channel/UCceuqcaS7oAGBYMBEhTyDEQ"
+                    target="_blank">YouTube</a> videos</p>
 
-                <p>I'm also a self-taught full stack web developer. I use <a
-                href="https://github.com/neovim/neovim" target="
-                _blank">neovim</a> to code as the mouse sucks.</p>
+                    <p>I'm also a self-taught full stack web developer. I use <a
+                    href="https://github.com/neovim/neovim" target="
+                    _blank">neovim</a> to code as the mouse sucks.</p>
 
-                <p>I also occasionally stream on <a href="https://twitch.tv/yonikosiner" target=" _blank">twitch</a> me coding.</p>
+                    <p>I also stream on <a href="https://twitch.tv/yonikosiner" target=" _blank">twitch</a> me coding.</p>
 
-                <h2>Other Stuff</h2>
-                <ul>
-                    <li>I use Linux and Dvorak btw <a href="https://github.com/yonikosiner/.dotfiles" target=" _blank">(dotfiles)</a></li>
-                </ul>
+                    <h2>Other Stuff</h2>
+                    <ul>
+                        <li>I started to learn to code when I was 11 with
+                        python then when I was 12 I started to learn html,
+                        css then from there I learnt javascript and found
+                        out I like backend more and now I do all sorts of
+                        things from React frontend to a backend in go (You
+                        can find all my projecs on <a
+                        href="https://gtihub.com/yonikosiner" target="_blank">github</a></li>
+                        <li>I use Neovim, Linux and Dvorak btw <a href="https://github.com/yonikosiner/.dotfiles" target=" _blank">(dotfiles)</a></li>
+                    </ul>
+                </div>
             </div>
             <ContactOther />
         </div>
