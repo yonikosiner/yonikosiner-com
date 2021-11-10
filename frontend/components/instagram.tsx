@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { post } from '../pages/api/instagram';
+import { story } from '../pages/api/instagramStory';
 
 function converIGtoJPG(base64data: any) {
     const jpegtpl =
@@ -58,18 +60,15 @@ function Stories() {
     <>
       <h4>Stories</h4>
       <a href="https://www.instagram.com/stories/kosiner.codes/">
-        {stories.map((story) => (
+        {stories.map((story: story) => (
           <img
             className="story"
-            //@ts-ignore
             key={story.media_preview}
             src={`https://images.weserv.nl/?url=${encodeURIComponent(
-                    //@ts-ignore
               story.display_url
             )}&h=100`}
             alt="@kosiner.codes Instagram Story"
             style={{
-                //@ts-ignore
               backgroundImage: `url(${converIGtoJPG(story.media_preview)})`,
             }}
           />
@@ -80,40 +79,35 @@ function Stories() {
 }
 
 export default function Instagram() {
-  const { loading, posts: gramz } = useInstagram();
-  return (
-    <div>
-      <h3>
-        <span className="highlight">
-          <a
-            href="https://instagram.com/kosiner.codes"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-          </a>
-          Instagram
-        </span>
-      </h3>
-      {loading && <p>One sec, getting the gramz...</p>}
-      <Stories />
-      {gramz.length ? <h4>Posts</h4> : null}
-      <div>
+    const { loading, posts: gramz } = useInstagram();
+    return (
+        <div>
+            <h3>
+            <span className="highlight">
+                <a
+                href="https://instagram.com/kosiner.codes"
+                target="_blank"
+                rel="noopener noreferrer"
+                >
+                </a>
+                Instagram
+            </span>
+        </h3>
+        {loading && <p>One sec, getting the gramz...</p>}
+        <Stories />
+        {gramz.length ? <h4>Posts</h4> : null}
+        <div>
         {Array.isArray(gramz) &&
-          gramz.map((gram) => (
-          //@ts-ignore
+        gramz.map((gram: post) => (
             <a href={gram.url} key={gram.id}>
-              <img
+                <img
                 src={`https://images.weserv.nl/?url=${encodeURIComponent(
-                  //@ts-ignore
-                  gram.thumbnail
-                )}&w=230`}
-                  //@ts-ignore
+                gram.thumbnail)}&w=230`}
                 alt={gram.caption}
-              />
+                />
             </a>
-          ))}
-      </div>
+            ))}
+        </div>
     </div>
-  );
-}
-
+    );
+};

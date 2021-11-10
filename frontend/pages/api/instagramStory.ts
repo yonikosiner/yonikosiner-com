@@ -3,9 +3,14 @@ import fetch from "node-fetch";
 
 const url = `https://www.instagram.com/graphql/query/?query_hash=04334405dbdef91f2c4e207b84c204d7&variables={"only_stories":true,"stories_prefetch":true,"stories_video_dash_manifest":false}`;
 
-    const cache = {
+const cache = {
     lastFetch: 0,
     posts: [],
+};
+
+export interface story {
+    media_preview: string;
+    display_url: string;
 };
 
 async function getPosts() {
@@ -16,7 +21,7 @@ async function getPosts() {
     }
     const res = await fetch(url, {
         headers: {
-            // get this value from your Storage tab in Firefox dev tools, or the application tab in chrome. As far as I can tell it's good for 1 year, but that seems to be updated daily...
+            //Need to take get your instagram cookies from your browser and put them into a env variable
             cookie: `sessionid=${process.env.INSTAGRAM_COOKIE}`,
         },
     })
