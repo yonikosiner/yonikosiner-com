@@ -8,3 +8,10 @@ export interface tweet {
         quote_count: number;
     };
 };
+
+export interface Repositories {
+    name: string;
+    description: string;
+    html_url: string;
+    fork?: boolean;
+}
