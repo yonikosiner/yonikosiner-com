@@ -11,6 +11,23 @@
     justify-content: center;
 }
 
+.desc {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    flex-direction: column;
+    font-size: 1.1875rem;
+}
+
+.left {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    width: 95%;
+    flex-direction: column;
+    font-size: 1.1875rem;
+}
+
 .title {
     text-align: center;
 }
@@ -18,8 +35,4 @@
 .workingOn {
     text-align: center;
     font-size: 30px;
-}
-
-.desc {
-    dispaly: none;
 }

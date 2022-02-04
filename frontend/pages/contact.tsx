@@ -10,26 +10,19 @@ export default function Contact() {
             <meta name="Contact page" content="Get in contact with Yoni Kosiner" />
         </Head>
         <h1 className={style.title}>Contact Me</h1>
-        {/*Main contect section*/}
         <div className={style.formWrapper}>
           <form
-            action="https://nodejs-sportfolio-yoni.herokuapp.com/contact"
+            action="api/contact"
             method="POST"
           >
-            {/* --------- Name ---------- */}
-            <input className={style.main_input} type="text" name="name" placeholder="Name: " />
-            {/* --------- Email ---------- */}
+            <input className={style.main_input} type="text" name="name" placeholder="Name:" />
             <br />
-            <input className={style.main_input} type="email" name="email" placeholder="Email: " />
-            {/* --------- Subject ---------- */}
+            <input className={style.main_input} type="email" name="email" placeholder="Email:" />
             <br />
-            <input className={style.main_input} type="text" name="subject" placeholder="Subject: " />
-            {/* --------- Message ---------- */}
+            <input className={style.main_input} type="text" name="subject" placeholder="Subject:" />
             <br />
-            <input className={style.message} type="text" name="message" placeholder="" />
-            {/* --------- Submit button center ---------- */}
+            <input className={style.message} type="text" name="message" placeholder="Message:" />
             <span className={style.submitCenter}>
-              {/* --------- Submit button ---------- */}
               <div className={style.submit}>
                 <button>Submit</button>
               </div>
@@ -37,7 +30,6 @@ export default function Contact() {
             </span>
           </form>
         </div>
-        {/*Other ways to get in touch*/}
         <ContactOther />
     </div>
   );

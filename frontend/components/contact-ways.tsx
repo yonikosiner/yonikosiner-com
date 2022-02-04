@@ -1,22 +1,14 @@
 import style from "../styles/contact-others.module.scss";
-//import Image from "next/image";
 
 import Link from "next/link";
 import React from "react";
 import { useRouter } from "next/router";
 
 export default function ContactOther() {
-    //Check if user is on contact page
     const router = useRouter();
 
     function ContactPage(): boolean {
-        let contactPage: boolean = false;
-
-        if (router.pathname === "/contact") {
-            contactPage = true;
-        };
-
-        return contactPage;
+        return router.pathname === "/contact";
     };
 
     return (
@@ -32,20 +24,20 @@ export default function ContactOther() {
                             - If you have got a quick quesiton or message pleases
                             Tweet {" "}
                             <a href="https://twitter.com/KosinerYoni" target=" _blank" style={{ textDecoration: "underLine" }}>@KosinerYoni{" "}</a>
-                            and I'll get back to you as soon as I can.
+                            and I'll get back to you as soon as I can
                         </li>
                         <li>
                             <strong>📸</strong>
                             <a href="https://instagram.com/kosiner.codes" target=" _blank" style={{ textDecoration: "underLine" }}>Instagram Dm's{" "}</a>
                             - I also reply to all my Instagram Dm's if you have a
                             quick queston and don't want it to be public on twitter
-                            feel free to drop me a instagram dm.
+                            feel free to drop me a instagram dm
                         </li>
                         <li>
                             <strong>📨</strong>
                             <a href="mailto:yoni@kosiner.co.uk" target=" _blank" style={{ textDecoration: "underLine" }}>Email{" "}</a>
                             - If it's a longer thing, or you don't want it to be a
-                            public tweet, please email me yoni@kosiner.co.uk.
+                            public tweet, please email me <a href="mailto:yoni@kosiner.co.uk" target=" _blank" style={{ textDecoration: "underLine" }}>yoni@kosiner.co.uk</a>
                         </li>
                         {/*Only show if you user is on any page other then contact because this page takes you back to contact*/}
                         {ContactPage() ? null :

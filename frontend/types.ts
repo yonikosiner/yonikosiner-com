@@ -1,5 +1,5 @@
 export interface tweet {
-    id: number;
+    id: string;
     text: string;
     public_metrics: {
         retweet_count: number;
