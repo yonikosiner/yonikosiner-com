@@ -14,6 +14,8 @@ export default async function handler(
             json.map((repo: Repositories) => {
                 //Removes the repo if it is a fork
                 if (repo.fork) return;
+                //Remove if name if is the chat app, twitch bot, or my portfolio
+                if (repo.name === "Twitch_bot" || repo.name.includes("chat") || repo.name === "yonikosiner-com") return;
 
                 //The object of the repo then push it to the array and once it
                 //has been through all the items the array is returned as json
