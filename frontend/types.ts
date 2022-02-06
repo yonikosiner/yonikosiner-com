@@ -15,3 +15,38 @@ export interface Repositories {
     html_url: string;
     fork?: boolean;
 }
+
+export interface post {
+    lastFetch: number;
+    thumbnail?: any;
+    caption?: string;
+    url?: string;
+    id?: number;
+    posts: {
+        biggie: string;
+        thumbnail: string;
+        url: string;
+        caption: string;
+        id: string;
+    }[];
+};
+
+export interface story {
+    media_preview: string;
+    display_url: string;
+};
+
+export interface YouTubeVideo {
+    id: {
+        videoId: string;
+    };
+    snippet: {
+        title: string;
+        description: string;
+        thumbnails: {
+            medium: {
+                url: string;
+            };
+        };
+    };
+};

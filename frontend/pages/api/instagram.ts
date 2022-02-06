@@ -1,22 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import fetch from 'node-fetch';
+import { post } from "../../types";
 
 const url = `https://www.instagram.com/graphql/query/?query_hash=e769aa130647d2354c40ea6a439bfc08&variables={%22id%22:%225910880527%22,%22first%22:8}`;
-
-export interface post {
-    lastFetch: number;
-    thumbnail?: any;
-    caption?: string;
-    url?: string;
-    id?: number;
-    posts: {
-        biggie: string;
-        thumbnail: string;
-        url: string;
-        caption: string;
-        id: string;
-    }[];
-};
 
 const cache: post = {
   lastFetch: 0,
@@ -42,7 +28,12 @@ async function getPosts() {
   if (timeSinceLastFetch <= 1800000) {
     return cache.posts;
   }
-  const data = await fetch(url).then((res) => res.json());
+  const data = await fetch(url, {
+        headers: {
+            //Need to take get your instagram cookies from your browser and put them into a env variable
+            cookie: `sessionid=${process.env.INSTAGRAM_COOKIE}`,
+        },
+  }).then((res) => res.json());
   const posts = slimUpPosts(data);
   // const posts = data;
   cache.lastFetch = Date.now();

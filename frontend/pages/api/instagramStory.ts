@@ -1,16 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import fetch from "node-fetch";
+import { story } from "../../types";
 
 const url = `https://www.instagram.com/graphql/query/?query_hash=04334405dbdef91f2c4e207b84c204d7&variables={"only_stories":true,"stories_prefetch":true,"stories_video_dash_manifest":false}`;
 
 const cache = {
     lastFetch: 0,
     posts: [],
-};
-
-export interface story {
-    media_preview: string;
-    display_url: string;
 };
 
 async function getPosts() {

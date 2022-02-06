@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { post } from '../pages/api/instagram';
-import { story } from '../pages/api/instagramStory';
+import React, { useState, useEffect } from "react";
+import { post } from "../types";
+import { story } from "../types";
+import style from "../styles/instagram.module.scss";
 
 function converIGtoJPG(base64data: any) {
     const jpegtpl =
@@ -58,13 +59,14 @@ function Stories() {
   if (!stories.length) return null;
   return (
     <>
-      <h4>Stories</h4>
+      <h4 style={{ textAlign: "left", fontSize: "25px", letterSpacing: "2px", fontWeight: "bolder" }}>Stories</h4>
       <a href="https://www.instagram.com/stories/kosiner.codes/">
         {stories.map((story: story) => (
           <img
             className="story"
             key={story.media_preview}
             src={`https://images.weserv.nl/?url=${encodeURIComponent(
+
               story.display_url
             )}&h=100`}
             alt="@kosiner.codes Instagram Story"
@@ -82,31 +84,21 @@ export default function Instagram() {
     const { loading, posts: gramz } = useInstagram();
     return (
         <div>
-            <h3>
-            <span className="highlight">
-                <a
-                href="https://instagram.com/kosiner.codes"
-                target="_blank"
-                rel="noopener noreferrer"
-                >
-                </a>
-                Instagram
-            </span>
-        </h3>
         {loading && <p>One sec, getting the gramz...</p>}
         <Stories />
-        {gramz.length ? <h4>Posts</h4> : null}
-        <div>
+        {gramz.length ? <h4 style={{ textAlign: "left", fontSize: "25px", letterSpacing: "2px", fontWeight: "bolder" }}>Posts</h4> : null}
+        <div className={style.insta}>
         {Array.isArray(gramz) &&
         gramz.map((gram: post) => (
             <a href={gram.url} key={gram.id}>
                 <img
+                style={{width: "200px", height: "180px"}}
                 src={`https://images.weserv.nl/?url=${encodeURIComponent(
                 gram.thumbnail)}&w=230`}
                 alt={gram.caption}
                 />
             </a>
-            ))}
+        ))}
         </div>
     </div>
     );
