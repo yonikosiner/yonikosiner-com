@@ -26,7 +26,7 @@ export default function Nav() {
                 <Link href="/book-notes">
                     <a>📒 BOOK NOTES</a>
                 </Link>
-                <Link href="/topics">
+                <Link href="/blog/topics">
                     <a>📝 ARTICLES</a>
                 </Link>
             </div>

@@ -54,14 +54,26 @@ function useInstagramStories() {
   return posts;
 }
 
-function Stories() {
+export function Stories() {
   const stories = useInstagramStories();
   if (!stories.length) return null;
   return (
     <>
-      <h4 style={{ textAlign: "left", fontSize: "25px", letterSpacing: "2px", fontWeight: "bolder" }}>Stories</h4>
       <a href="https://www.instagram.com/stories/kosiner.codes/">
-        {stories.map((story: story) => (
+        {stories.length >= 7 ? stories.slice(0,6).map((story: story) => (
+          <img
+            className="story"
+            key={story.media_preview}
+            src={`https://images.weserv.nl/?url=${encodeURIComponent(
+
+              story.display_url
+            )}&h=100`}
+            alt="@kosiner.codes Instagram Story"
+            style={{
+              backgroundImage: `url(${converIGtoJPG(story.media_preview)})`,
+            }}
+          />
+        )) : stories.map((story: story) => (
           <img
             className="story"
             key={story.media_preview}
@@ -85,14 +97,13 @@ export default function Instagram() {
     return (
         <div>
         {loading && <p>One sec, getting the gramz...</p>}
-        <Stories />
-        {gramz.length ? <h4 style={{ textAlign: "left", fontSize: "25px", letterSpacing: "2px", fontWeight: "bolder" }}>Posts</h4> : null}
+        {gramz.length ? <h4 style={{ textAlign: "left", fontSize: "25px", letterSpacing: "2px", fontWeight: "bolder", marginLeft: "2rem" }}>Posts</h4> : null}
         <div className={style.insta}>
         {Array.isArray(gramz) &&
         gramz.map((gram: post) => (
             <a href={gram.url} key={gram.id}>
                 <img
-                style={{width: "200px", height: "180px"}}
+                style={{width: "200px", height: "200px" }}
                 src={`https://images.weserv.nl/?url=${encodeURIComponent(
                 gram.thumbnail)}&w=230`}
                 alt={gram.caption}

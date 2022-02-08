@@ -5,7 +5,7 @@ import { YouTubeVideo } from "../types";
 export default function YouTube() {
     const youtube = useYouTube();
     return (
-        <div>
+        <div style={{ padding: "1rem" }}>
         {!youtube.length && <p>Loading...</p>}
         {youtube.map((video: YouTubeVideo, index) => (
             <div key={index}>
