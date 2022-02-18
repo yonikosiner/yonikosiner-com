@@ -22,7 +22,7 @@ export async function getPosts() {
 export async function getTags() {
     return await api.tags
     .browse({
-        limit: 'all',
+        limit: "all",
     })
     .catch((err) => {
         console.error(err)

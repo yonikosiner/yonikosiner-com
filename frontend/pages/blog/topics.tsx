@@ -3,7 +3,6 @@ import Link from "next/link";
 import WhatsAComputer from "../../public/images/Yoni_on_ipad_typing.png";
 import style from "../../styles/topics.module.scss";
 import { getPosts, getTags } from "../../lib/posts";
-import { useEffect, useState } from "react";
 
 export interface post {
     title: string;
@@ -23,29 +22,8 @@ export interface tags {
     slug: string;
 }
 
-export default function Topics() {
-    const [posts, setPosts] = useState<post[]>([]);
-    const [tags, setTags] = useState<tags[]>([]);
-    const [loading, setLoading] = useState(true);
-
-    //@ts-ignore
-    //useEffect(async (): Promise<void> => {
-        //@ts-ignore
-        await getPosts().then((posts: post[]) => {
-            posts.map((post) => {
-                setPosts((prevPosts) => [...prevPosts, post]);
-            });
-        });
-        //@ts-ignore
-        await getTags().then((tags: tags[]) => {
-            tags.map((tag) => {
-                setTags((prevTags) => [...prevTags, tag]);
-            });
-        }).finally(() => {
-            setLoading(false);
-        });
-    }, []);
-
+//@ts-ignore
+export default async function Topics({ posts, tags}: { posts: post[], tags: tags[] }) {
     return (
         <div>
             <Head>
@@ -67,7 +45,7 @@ export default function Topics() {
             {/*Topics*/}
             <div>
                 <h2>️️✍️ Topic Areas</h2>
-                {loading && <p>Loading...</p>}
+                {tags[0] === null && <p>Loading...</p>}
                 {Array.isArray(tags) &&
                     tags.map((tag) => (
                         <ul>
@@ -100,34 +78,17 @@ export default function Topics() {
 };
 
 //@ts-ignore
-//Topics.getInitialProps = async ({ res })=> {
-    //if (res) {
-        //const cacheAge = 60 * 60 * 12
-        //res.setHeader('Cache-Control', `public,s-maxage=${cacheAge}`)
-    //}
+Topics.getInitialProps = async ({ res }) => {
+    if (res) {
+        const cacheAge = 60 * 60 * 12
+        res.setHeader('Cache-Control', `public,s-maxage=${cacheAge}`)
+    }
 
-    ////const [loading, setLoading] = useState<boolean>(true);
-    //let loading = true;
+    const posts = await getPosts();
+    const tags = await getTags();
 
-    //const posts = await getPosts();
-    //const tags = await getTags().then(() => loading = false);
-
-    //return {
-        //tags: tags,
-        //posts: posts,
-        //loading: loading
-    //}
-
-//}
-//{posts.map((post) => {
-//const tagComp = post.tags.map((tag) => tag.name)
-
-//if (tagComp[0] === tag.name) {
-//return (
-//<div>
-//<h3>{post.title}</h3>
-//<p>{post.excerpt}</p>
-//</div>
-//)
-//}
-//})}
+    return {
+        tags: tags,
+        posts: posts
+    }
+}
