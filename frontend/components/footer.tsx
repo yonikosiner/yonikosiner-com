@@ -18,7 +18,7 @@ export default function Footer(): object {
                         {tweets.slice(0,3).map(function(tweet: tweet): JSX.Element {
                             const url: string = `https://twitter.com/KosinerYoni/status/${tweet.id}`;
                                 return (
-                                    <a href={url} target="_blank">
+                                    <a key={tweet.id} href={url} target="_blank">
                                         <div key={tweet.id} className={style.tweet}>
                                             <p>{tweet.text}</p>
                                             <p>Likes: {tweet.public_metrics.like_count}</p>

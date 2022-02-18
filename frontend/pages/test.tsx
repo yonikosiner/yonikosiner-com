@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
-import { getPosts } from "../../lib/posts";
-import { parseURL } from "../../utils/parseURL";
+import { getPosts } from "../lib/posts";
+import { parseURL } from "../utils/parseURL";
 
 export interface post {
     title: string;
