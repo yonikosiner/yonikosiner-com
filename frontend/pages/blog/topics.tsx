@@ -3,6 +3,7 @@ import Link from "next/link";
 import WhatsAComputer from "../../public/images/Yoni_on_ipad_typing.png";
 import style from "../../styles/topics.module.scss";
 import { getPosts, getTags } from "../../lib/posts";
+import { useRef } from "react";
 
 export interface post {
     title: string;
@@ -22,8 +23,8 @@ export interface tags {
     slug: string;
 }
 
-//@ts-ignore
-export default async function Topics({ posts, tags}: { posts: post[], tags: tags[] }) {
+export default function Topics({ posts, tags}: { posts: post[], tags: tags[] }) {
+    const tagsRef = useRef(tags);
     return (
         <div>
             <Head>
@@ -45,33 +46,32 @@ export default async function Topics({ posts, tags}: { posts: post[], tags: tags
             {/*Topics*/}
             <div>
                 <h2>️️✍️ Topic Areas</h2>
-                {tags[0] === null && <p>Loading...</p>}
-                {Array.isArray(tags) &&
-                    tags.map((tag) => (
-                        <ul>
-                            <li>
-                                <a href={`blog/topics/${tag.slug}`}>{tag.name}</a>
-                                {posts.map((post) => {
-                                    const tagComp = post.tags.find(
-                                        (tagComp) => tagComp.id === tag.id
-                                    );
+                {tags.map((tag) => (
+                    //@ts-ignore
+                    <ul id={tag.id} key={tag.id}>
+                        <li>
+                            <a href={`blog/topics/${tag.slug}`}>{tag.name}</a>
+                            {posts.map((post) => {
+                                // One line to rule them all, one line to find them, one line to bring them all, and in the darkness bind them.
+                                const tagComp = post.tags.find((tagComp) => tagComp.id === tag.id);
 
-                                    if (tagComp) {
-                                    return (
-                                        <ul style={{ paddingLeft: "10px" }}>
-                                            <li>
+                                if (tagComp) {
+                                    const tag = document.getElementById(tag.id);
+                                    if (tagsRef.current.length < 2) {
+                                        return (
+                                            <div key={post.id} style={{ paddingLeft: "10px"}}>
                                                 <Link href={`/blog/posts/${post.slug}`}>
                                                     <a>{post.title}</a>
                                                 </Link>
-                                            </li>
-                                        </ul>
-                                        );
+                                            </div>
+                                           )
+                                        };
                                     }
-                                })}
-                            </li>
-                        </ul>
-                    ))
-                }
+                                }
+                            )}
+                        </li>
+                    </ul>
+                ))}
             </div>
         </div>
     )

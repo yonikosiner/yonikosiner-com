@@ -7,6 +7,7 @@ const api = new GhostContentAPI({
     version: "v3"
 });
 
+
 export async function getPosts() {
     return await api.posts
     .browse({
@@ -22,7 +23,7 @@ export async function getPosts() {
 export async function getTags() {
     return await api.tags
     .browse({
-        limit: "all",
+        limit: 'all',
     })
     .catch((err) => {
         console.error(err)
