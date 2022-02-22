@@ -23,12 +23,23 @@ export async function getPosts() {
 export async function getTags() {
     return await api.tags
     .browse({
+        include: "count.posts",
         limit: 'all',
     })
     .catch((err) => {
         console.error(err)
     })
 }
+
+export async function getPostsByTag(tag: string) {
+    return await api.posts.browse({
+        include: "authors",
+        limit: "all",
+        filter: `tags:${tag}`,
+    }).catch((err) => {
+        console.error(err)
+    })
+};
 
 export async function getPostBySlug(slug: string) {
     return await api.posts

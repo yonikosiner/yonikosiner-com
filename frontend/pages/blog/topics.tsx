@@ -1,9 +1,9 @@
 import Head from "next/head";
-import Link from "next/link";
 import WhatsAComputer from "../../public/images/Yoni_on_ipad_typing.png";
-import style from "../../styles/topics.module.scss";
-import { getPosts, getTags } from "../../lib/posts";
-import { useRef } from "react";
+//import style from "../../styles/topics.module.scss";
+import { getTags } from "../../lib/posts";
+import usePostByTag from "../../hooks/usePostByTag";
+import Link from "next/link";
 
 export interface post {
     title: string;
@@ -23,8 +23,7 @@ export interface tags {
     slug: string;
 }
 
-export default function Topics({ posts, tags}: { posts: post[], tags: tags[] }) {
-    const tagsRef = useRef(tags);
+export default function Topics({ tags, apiKey }: { tags: tags[], apiKey: string }) {
     return (
         <div>
             <Head>
@@ -46,49 +45,42 @@ export default function Topics({ posts, tags}: { posts: post[], tags: tags[] }) 
             {/*Topics*/}
             <div>
                 <h2>️️✍️ Topic Areas</h2>
-                {tags.map((tag) => (
-                    //@ts-ignore
-                    <ul id={tag.id} key={tag.id}>
-                        <li>
-                            <a href={`blog/topics/${tag.slug}`}>{tag.name}</a>
-                            {posts.map((post) => {
-                                // One line to rule them all, one line to find them, one line to bring them all, and in the darkness bind them.
-                                const tagComp = post.tags.find((tagComp) => tagComp.id === tag.id);
+                {tags.map((tag) => {
+                    const posts = usePostByTag(tag.name, apiKey);
 
-                                if (tagComp) {
-                                    const tag = document.getElementById(tag.id);
-                                    if (tagsRef.current.length < 2) {
-                                        return (
-                                            <div key={post.id} style={{ paddingLeft: "10px"}}>
-                                                <Link href={`/blog/posts/${post.slug}`}>
-                                                    <a>{post.title}</a>
-                                                </Link>
-                                            </div>
-                                           )
-                                        };
-                                    }
-                                }
-                            )}
-                        </li>
-                    </ul>
-                ))}
+                    return (
+                        <ul id={tag.id} key={tag.id}>
+                            <li>
+                                <Link href={`/blog/topics/${tag.slug}`}>
+                                    <a>{tag.name}</a>
+                                </Link>
+                            </li>
+                            {!posts.length && <p>Loading...</p>}
+                            {posts.slice(0,2).map((post: post) => {
+                                return (
+                                    <li key={post.id} style={{ marginLeft: "10px" }} >
+                                        <Link href={`/blog/posts/${post.slug}`}>
+                                            <a>{post.title}</a>
+                                        </Link>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                       );
+                    })}
             </div>
         </div>
     )
 };
 
-//@ts-ignore
-Topics.getInitialProps = async ({ res }) => {
-    if (res) {
-        const cacheAge = 60 * 60 * 12
-        res.setHeader('Cache-Control', `public,s-maxage=${cacheAge}`)
-    }
-
-    const posts = await getPosts();
+export async function getServerSideProps() {
+    const ghostApiKey = process.env.GHOST_API_KEY;
     const tags = await getTags();
 
     return {
-        tags: tags,
-        posts: posts
+        props: {
+            apiKey: ghostApiKey,
+            tags: tags,
+        },
     }
 }

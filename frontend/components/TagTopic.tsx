@@ -1,6 +1,6 @@
-import React from "react";
 import Link from "next/link";
 import { post } from "../pages/blog/topics";
+import { getPostsByTag } from "../lib/posts";
 
 export interface tag {
     name: string;
@@ -14,23 +14,20 @@ export default function TagTopic({ tag, posts }: { tag: tag, posts: post[] }) {
             <ul id={tag.id} key={tag.id}>
                 <li>
                     <a href={`blog/topics/${tag.slug}`}>{tag.name}</a>
-                    {posts.map((post) => {
-                        // One line to rule them all, one line to find them, one line to bring them all, and in the darkness bind them.
-                        const tagComp = post.tags.find((tagComp) => tagComp.id === tag.id);
-
-                        if (tagComp) {
-                            return (
-                                <div key={post.id} style={{ paddingLeft: "10px"}}>
-                                    <Link href={`/blog/posts/${post.slug}`}>
-                                        <a>{post.title}</a>
-                                    </Link>
-                                </div>
-                               )
-                            };
-                        }
-                    )}
+                    {posts.slice(0,2).map((post: post) => (
+                        <Link href={`/blog/topics/${tag.slug}/${post.slug}`} key={post.id}>
+                            <a>{post.title}</a>
+                        </Link>
+                    ))}
                 </li>
             </ul>
         </div>
     )
+}
+
+//@ts-ignore
+TagTopic.getInitialProps = async ({ query }) => {
+    const tag: tag = query.tag;
+    const posts = await getPostsByTag(tag.name);
+    return { tag, posts };
 }
