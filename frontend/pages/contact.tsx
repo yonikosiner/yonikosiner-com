@@ -7,6 +7,7 @@ export default function Contact() {
     <div>
         <Head>
             <title>Yoni Kosiner | Contact Page</title>
+            console.logc
             <meta name="Contact page" content="Get in contact with Yoni Kosiner" />
         </Head>
         <h1 className={style.title}>Contact Me</h1>

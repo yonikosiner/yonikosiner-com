@@ -9,7 +9,7 @@ async function main(name: string, email: string, message: string, subject: strin
         host: 'smtp.gmail.com',
         auth: {
             user: "ykosiner@gmail.com",
-            pass: process.env.PASS,
+            pass: process.env.GMAIL_PASS,
         },
     });
 
