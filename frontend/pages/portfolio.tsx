@@ -6,7 +6,7 @@ export default function Portfolio() {
     const github = Github();
 
     return (
-        <div className={style.test}>
+        <div>
             <Head>
                 <title>Yoni Kosiner | Portfolio Page</title>
                 <meta name="Portfolio page" content="Portfolio page Yoni Kosiner" />
@@ -15,36 +15,33 @@ export default function Portfolio() {
             <div className={style.projects}>
                 <div className={style.project}>
                     <div className={style.text}>
-                        <h2>Chat app</h2>
-                        <p>This is a chat app built with React.js and typescript on
-                        the frontend, and it uses websockets with Rust in the
-                        backend</p>
-                        <a>View code</a>
+                        <h2>Todo me daddy</h2>
+                        <p>This is a neovim plugin I built to easily keep track
+                            of to do comments in your code using telescope.
+                            Writen in lua btw.</p>
+                        <a href="https://github.com/yonikosiner/todo-me-daddy" target=" _blank">View code</a>
                     </div>
                 </div>
                 <div className={style.projcet}>
                     <div className={style.text}>
-                        <h2>Twitch bot</h2>
-                        <p>This is a bot that listens to my twitch chat and allows
-                        chat to, Turn of my screen, change my keyboard to qwerty (I
-                        use dvorak btw), insert text into neovim, perofrm vim
-                        commands, change my i3 workspace, and change my
-                        background. Along with doing that this bot can also log my
-                        chat into file and then I can see that in tmux, and if
-                        anyone spams commands or does something they should not I
-                        can band them from the app. Oh and yes it does log what
-                        happens in my status bar in vim.</p>
-                        <a>View code</a>
+                        <h2>Track Pumps a Day</h2>
+                        <p>This is a little rest api written in go. Long story
+                            short I'm asthmatic, and I wanted a way to keep
+                            track of how many times a day I have taken my
+                            inhaler. So this little api allows me to track how
+                            many times a day I have taken my inhaler, between
+                            any device that can access the internet</p>
+                        <a href="https://github.com/yonikosiner/track-pumps-a-day" target=" _blank">View code</a>
                     </div>
                 </div>
                 <div className={style.projcet}>
                     <div className={style.text}>
                         <h2>Personal website</h2>
                         <p>This website it self is a next.js website bulit with
-                        typescript (how do people use regular js?). The way my blog
-                        pages work is by using a ghost backend stored on digital
-                        ocean.</p>
-                        <a>View code</a>
+                            typescript (how do people use regular js?). The way my blog
+                            pages work is by using a ghost backend stored on digital
+                            ocean.</p>
+                        <a href="https://github.com/yonikosiner/yonikosiner-com" target=" _blank">View code</a>
                     </div>
                 </div>
             </div>

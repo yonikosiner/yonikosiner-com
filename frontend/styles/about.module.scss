@@ -36,3 +36,13 @@
     text-align: center;
     font-size: 30px;
 }
+
+@media (max-width: 910px) {
+    .hero {
+        width: 90%;
+    }
+
+    .desc {
+        width: 90%;
+    }
+}

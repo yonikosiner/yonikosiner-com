@@ -4,12 +4,12 @@ import Footer from "../components/footer";
 import type { AppProps } from 'next/app'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <>
-        <Nav />
-        <Component {...pageProps} />
-        <Footer />
-    </>
-  )
+    return (
+        <>
+            <Nav />
+            <Component {...pageProps} />
+            <Footer />
+        </>
+    )
 }
 export default MyApp

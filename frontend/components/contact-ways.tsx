@@ -5,17 +5,13 @@ import React from "react";
 import { useRouter } from "next/router";
 
 export default function ContactOther() {
-    const router = useRouter();
-
-    function ContactPage(): boolean {
-        return router.pathname === "/contact";
-    };
+    const ContactPage: boolean = useRouter().pathname === "/contact";
 
     return (
         <div className={style.center}>
             <div className={style.main}>
-            {/*Only show if you user is on any page other then contact because grammer would not make senes on contact page*/}
-                {ContactPage() ? <h2>Other Places To Get In Touch</h2> : <h2>Contact me</h2>}
+                {/*Only show if you user is on any page other then contact because grammer would not make senes on contact page*/}
+                {ContactPage ? <h2>Other Places To Get In Touch</h2> : <h2>Contact me</h2>}
                 <div>
                     <ol>
                         <li>
@@ -39,8 +35,13 @@ export default function ContactOther() {
                             - If it's a longer thing, or you don't want it to be a
                             public tweet, please email me <a href="mailto:yoni@kosiner.co.uk" target=" _blank" style={{ textDecoration: "underLine" }}>yoni@kosiner.co.uk</a>
                         </li>
-                        {/*Only show if you user is on any page other then contact because this page takes you back to contact*/}
-                        {ContactPage() ? null :
+                        <li>
+                            <strong>💬 </strong>
+                            Discord - {" "}
+                            You can always send me a message on discord too, Yonithy - 🦶#3242
+                        </li>
+                        {/*Only show if you user is on any page other then contact because this page takes you back to the contact page*/}
+                        {ContactPage ? null :
                             <li>
                                 <strong>⌨️</strong>
                                 <Link href="/contact"><a style={{ textDecoration: "underline" }}>Contact page {" "}</a></Link>

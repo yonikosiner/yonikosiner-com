@@ -1,60 +1,51 @@
 @import "./variable.scss";
 
-
-/**
- 8-27 hero
- 31 latest section
-   42 latest work section
-**/
-
 .hero {
     min-height: 20vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 7rem 10rem;
-    width: 70rem;
+    padding: 7rem 10rem 20rem;
     overflow: hidden;
+
     span {
         border-bottom: 5px solid $accent-color;
         display: inline-block;
         line-height: 0.85;
     }
+
     &_.text {
         flex: 3;
         padding-right: 5rem;
         overflow: hidden;
         width: 90%;
     }
+
 }
 
-//Latest
-.latest {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10rem 10rem;
-    width: 90rem;
-    overflow: hidden;
-}
+@media (max-width: 1800px) {
+    .video {
+        display: none;
+    }
 
-//Latest work
-.latestWork {
-    h1 {
-        font-size: 4.3125rem;
+    .hero {
+        justify-content: center;
     }
 }
 
-.latestArticles {
-    h1 {
-        font-size: 4.3125rem;
+@media (max-width: 910px) {
+    .hero {
+        padding: 5rem;
     }
 }
 
-.underline:after {
-    content: ""; /* This is necessary for the pseudo element to work. */
-    display: block; /* This will put the pseudo element on its own line. */
-    width: 80%; /* Change this to whatever width you want. */
-    padding-top: 20px; /* This creates some space between the element and the border. */
-    border-bottom: 5px solid $accent-color; /* This creates the border. Replace black with whatever color you want. */
+@media (max-width: 823px) {
+    .hero {
+        padding: 0rem;
+    }
+}
+@media (max-width: 698px) {
+    .hero {
+        padding: 1rem;
+    }
 }
