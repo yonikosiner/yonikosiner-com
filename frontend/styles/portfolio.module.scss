@@ -70,12 +70,29 @@
     }
 }
 
+.readMore {
+    border: 3px solid $accent-color;
+    border-radius: 5px;
+    background: none;
+    transition: 0.3s ease all;
+}
+
+.readMore:hover {
+    background: $accent-color;
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
 @media (max-width: 1369px) {
+    .readMore {
+        background: $accent-color;
+        color: #ffffff;
+    }
+
     .otherProjects {
         display: none;
     }
 }
-
 
 @media (max-width: 1225px) {
     .projects {

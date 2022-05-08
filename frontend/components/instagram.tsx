@@ -21,96 +21,96 @@ function converIGtoJPG(base64data: any) {
 }
 
 function useInstagram() {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    setLoading(true);
-    fetch(`/api/instagram`)
-      .then((res) => res.json())
-      .then((data) => {
-        setLoading(false);
-        setPosts(data);
-      })
-      .catch((err) => {
-        setLoading(false);
-        setPosts([]);
-      });
-  }, []);
-  return { posts, loading };
+    const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(false);
+    useEffect(() => {
+        setLoading(true);
+        fetch(`/api/instagram`)
+            .then((res) => res.json())
+            .then((data) => {
+                setLoading(false);
+                setPosts(data);
+            })
+            .catch((err) => {
+                setLoading(false);
+                setPosts([]);
+            });
+    }, []);
+    return { posts, loading };
 }
 
 function useInstagramStories() {
-  const [posts, setPosts] = useState([]);
-  useEffect(() => {
-    fetch(`/api/instagramStory`)
-      .then((res) => res.json())
-      .then((data) => {
-        setPosts(data);
-      })
-      .catch((err) => {
-        setPosts([]);
-      });
-  }, []);
-  return posts;
+    const [posts, setPosts] = useState([]);
+    useEffect(() => {
+        fetch(`/api/instagramStory`)
+            .then((res) => res.json())
+            .then((data) => {
+                setPosts(data);
+            })
+            .catch((err) => {
+                setPosts([]);
+            });
+    }, []);
+    return posts;
 }
 
 export function Stories() {
-  const stories = useInstagramStories();
-  if (!stories.length) return null;
-  return (
-    <>
-      <a href="https://www.instagram.com/stories/kosiner.codes/">
-        {stories.length >= 7 ? stories.slice(0,6).map((story: story) => (
-          <img
-            className="story"
-            key={story.media_preview}
-            src={`https://images.weserv.nl/?url=${encodeURIComponent(
+    const stories = useInstagramStories();
+    if (!stories.length) return null;
+    return (
+        <>
+            <a href="https://www.instagram.com/stories/kosiner.codes/">
+                {stories.length >= 7 ? stories.slice(0, 6).map((story: story) => (
+                    <img
+                        className="story"
+                        key={story.media_preview}
+                        src={`https://images.weserv.nl/?url=${encodeURIComponent(
 
-              story.display_url
-            )}&h=100`}
-            alt="@kosiner.codes Instagram Story"
-            style={{
-              backgroundImage: `url(${converIGtoJPG(story.media_preview)})`,
-            }}
-          />
-        )) : stories.map((story: story) => (
-          <img
-            className="story"
-            key={story.media_preview}
-            src={`https://images.weserv.nl/?url=${encodeURIComponent(
+                            story.display_url
+                        )}&h=100`}
+                        alt="@kosiner.codes Instagram Story"
+                        style={{
+                            backgroundImage: `url(${converIGtoJPG(story.media_preview)})`,
+                        }}
+                    />
+                )) : stories.map((story: story) => (
+                    <img
+                        className="story"
+                        key={story.media_preview}
+                        src={`https://images.weserv.nl/?url=${encodeURIComponent(
 
-              story.display_url
-            )}&h=100`}
-            alt="@kosiner.codes Instagram Story"
-            style={{
-              backgroundImage: `url(${converIGtoJPG(story.media_preview)})`,
-            }}
-          />
-        ))}
-      </a>
-    </>
-  );
+                            story.display_url
+                        )}&h=100`}
+                        alt="@kosiner.codes Instagram Story"
+                        style={{
+                            backgroundImage: `url(${converIGtoJPG(story.media_preview)})`,
+                        }}
+                    />
+                ))}
+            </a>
+        </>
+    );
 }
 
 export default function Instagram() {
     const { loading, posts: gramz } = useInstagram();
     return (
         <div>
-        {loading && <p>One sec, getting the gramz...</p>}
-        {gramz.length ? <h4 style={{ textAlign: "left", fontSize: "25px", letterSpacing: "2px", fontWeight: "bolder", marginLeft: "2rem" }}>Posts</h4> : null}
-        <div className={style.insta}>
-        {Array.isArray(gramz) &&
-        gramz.map((gram: post) => (
-            <a href={gram.url} key={gram.id}>
-                <img
-                style={{width: "200px", height: "200px" }}
-                src={`https://images.weserv.nl/?url=${encodeURIComponent(
-                gram.thumbnail)}&w=230`}
-                alt={gram.caption}
-                />
-            </a>
-        ))}
+            {loading && <p>One sec, getting the gramz...</p>}
+            {gramz.length ? <h4 style={{ textAlign: "left", fontSize: "25px", letterSpacing: "2px", fontWeight: "bolder", marginLeft: "2rem" }}>Posts</h4> : null}
+            <div className={style.insta}>
+                {Array.isArray(gramz) &&
+                    gramz.map((gram: post) => (
+                        <a href={gram.url} key={gram.id}>
+                            <img
+                                style={{ width: "200px", height: "200px" }}
+                                src={`https://images.weserv.nl/?url=${encodeURIComponent(
+                                    gram.thumbnail)}&w=230`}
+                                alt={gram.caption}
+                            />
+                        </a>
+                    ))}
+            </div>
         </div>
-    </div>
     );
 };

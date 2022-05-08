@@ -20,8 +20,8 @@ async function main(name: string, email: string, message: string, subject: strin
         html: `${message} <br> <p>${name}'s email adress is <a href=mailto:${email}>${email}</a></p>`,
     });
 
-        console.log("Message sent: %s", info.messageId);
-        console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    console.log("Message sent: %s", info.messageId);
+    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
 };
 
 export default async function handler(
@@ -79,14 +79,14 @@ export default async function handler(
         return;
     };
 
-    if (message.length > 1000) {
+    if (message.length > 5000) {
         res.status(401).json({
-            error: "Please provide a message with less than 1000 characters"
+            error: "Please provide a message with less than 5000 characters"
         });
         return;
     };
 
-    if (email.length > 50) {
+    if (email.length > 100) {
         res.status(401).json({
             error: "Please provide an email with less than 50 characters"
         });
@@ -96,13 +96,6 @@ export default async function handler(
     if (email.length < 5) {
         res.status(401).json({
             error: "Please provide an email with at least 5 characters"
-        });
-        return;
-    };
-
-    if (name !== name.trim()) {
-        res.status(401).json({
-            error: "Please provide a name without leading or trailing spaces"
         });
         return;
     };

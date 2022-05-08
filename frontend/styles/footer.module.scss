@@ -31,3 +31,11 @@
         transform: scale(1.1);
     }
 }
+
+@media (max-width: 1010px) {
+    .social {
+        img {
+            display: none;
+        }
+    }
+}

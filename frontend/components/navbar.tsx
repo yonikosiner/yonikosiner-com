@@ -16,11 +16,19 @@ export default function Nav() {
         setOpen(!open)
     }
 
+    function handleClickLogo(): void {
+        if (open === true) {
+            setOpen(false)
+        } else {
+            setOpen(true)
+        }
+    }
+
     return (
         <div className={style.nav}>
             <div className={style.logo}>
                 <Link href="/">
-                    <a onClick={handleClick}>
+                    <a onClick={handleClickLogo}>
                         <Image src={logo} alt="logo" />
                     </a>
                 </Link>
