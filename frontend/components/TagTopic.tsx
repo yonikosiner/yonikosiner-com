@@ -14,7 +14,7 @@ export default function TagTopic({ tag, posts }: { tag: tag, posts: post[] }) {
             <ul id={tag.id} key={tag.id}>
                 <li>
                     <a href={`blog/topics/${tag.slug}`}>{tag.name}</a>
-                    {posts.slice(0,2).map((post: post) => (
+                    {posts.slice(0, 2).map((post: post) => (
                         <Link href={`/blog/topics/${tag.slug}/${post.slug}`} key={post.id}>
                             <a>{post.title}</a>
                         </Link>
