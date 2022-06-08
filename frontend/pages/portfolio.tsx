@@ -16,7 +16,7 @@ export default function Portfolio() {
     };
 
     return (
-        <div>
+        <div style={{ minHeight: "50vw" }}>
             <Head>
                 <title>Yoni Kosiner | Portfolio Page</title>
                 <meta name="Portfolio page" content="Portfolio page Yoni Kosiner" />
@@ -26,7 +26,7 @@ export default function Portfolio() {
                 {portfolioCards.map((card: portfolioCardProps) => (
                     <PortfolioCard title={card.title} body={card.body} link={card.link} key={card.title} />
                 ))}
-           </div>
+            </div>
             {/*Github repos*/}
             <div className={style.center}>
 
