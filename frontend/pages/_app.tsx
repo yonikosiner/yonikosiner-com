@@ -7,8 +7,6 @@ import { useRouter } from 'next/router';
 function MyApp({ Component, pageProps }: AppProps) {
     const HomePage: boolean = useRouter().pathname === "/";
 
-    console.log("test", HomePage)
-
     return (
         <>
             <Nav />
