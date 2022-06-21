@@ -28,9 +28,7 @@ export default function Nav() {
         <div className={style.nav}>
             <div className={style.logo}>
                 <Link href="/">
-                    <a onClick={handleClickLogo}>
-                        <Image src={logo} alt="logo" />
-                    </a>
+                    <Image src={logo} alt="logo" />
                 </Link>
             </div>
             {/*@ts-ignore*/}

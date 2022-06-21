@@ -16,17 +16,16 @@ export default function About() {
             <div className={style.center}>
                 <div className={style.desc}>
                     <div className={style.left}>
-                        <p>Hello my name is Yoni. <br /> <br /> For the past two years I have
+                        <p>Hello my name is Yoni. <br /> <br /> For the past few years I have
                             been creating content to do with coding on <a
                                 href="https://instagram.com/kosiner.codes"
-                                target="_blank">insatgram</a>, and over the past year and a bit
-                            I have been creating <a
-                                href="https://www.youtube.com/c/yonikosiner"
-                                target="_blank">YouTube</a> videos.</p>
+                                target="_blank">insatgram</a>, and on <a
+                                    href="https://www.youtube.com/c/yonikosiner"
+                                    target="_blank">YouTube</a>.</p>
 
-                        <p>I'm also a self-taught full stack web developer (with a preference towards the backend).</p>
+                        <p>I'm a self-taught full stack developer (with a strong preference towards the backend, in the lords progarming laungage go).</p>
 
-                        <p>I also stream on <a href="https://twitch.tv/yonikosiner"
+                        <p>I also sometimes stream on <a href="https://twitch.tv/yonikosiner"
                             target=" _blank">twitch</a> me coding.</p>
 
                         <h2>Other Stuff</h2>

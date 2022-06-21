@@ -18,10 +18,10 @@ class GetVideos {
         if (timeSinceLastFetch <= 86400000) return cache.videos;
         fetch(`https://www.googleapis.com/youtube/v3/search\?key\=${process.env.YOUTUBE_API_KEY}\&channelId\=UCceuqcaS7oAGBYMBEhTyDEQ\&part\=snippet,id\&order\=date\&maxResults\=3`, {
             method: 'GET',
-        headers: {
-            "Content-Type": 'application/json',
-            "User-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.87 Safari/537.36"
-        },
+            headers: {
+                "Content-Type": 'application/json',
+                "User-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.87 Safari/537.36"
+            },
         }).then((data) => {
             data.json().then((json: YouTubeVideo[]) => {
                 //@ts-ignore

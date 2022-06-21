@@ -39,7 +39,7 @@ export default function Portfolio() {
 
                 {!github.length && <p>Loading</p>}
                 {showGithub && (
-                    <div>
+                    <div className={style.github}>
                         {github.map((repo: Repositories) => (
                             <div key={repo.name}>
                                 <h2>{repo.name}</h2>
