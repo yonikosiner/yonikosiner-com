@@ -143,6 +143,10 @@
         margin-top: 3rem;
     }
 
+    p {
+        text-align: center;
+    }
+
     button {
         border: none;
         font-size: 1.5rem;
@@ -150,10 +154,6 @@
         background-color: $accent-color;
         transition: 0.3s ease all;
         padding: 0.5rem;
-
-        p {
-            font-size: 17px;
-        }
 
         &:hover {
             background-color: $accent-color-hover;

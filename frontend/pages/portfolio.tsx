@@ -44,7 +44,7 @@ export default function Portfolio() {
                             <div key={repo.name}>
                                 <h2>{repo.name}</h2>
                                 {repo.description ? <p>{repo.description}</p> : <p>No description</p>}
-                                <a href={repo.html_url} target="_blank">View code</a>
+                                <a href={repo.html_url} target="_blank" rel="noreferrer">View code</a>
                             </div>
                         ))}
                     </div>
