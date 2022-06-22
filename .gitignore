@@ -37,3 +37,6 @@ frontend/.env
 
 # vercel
 .vercel
+.netlify
+
+frontend/out/
