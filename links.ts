@@ -5,6 +5,14 @@ export interface link {
 
 export const links: link[] = [
     {
+        "name": "Buy Me a Coffee ❤️",
+        "url": "https://www.buymeacoffee.com/yonikosiner"
+    },
+    {
+        "name": "Twitch",
+        "url": "https://twitch.tv/yonikosiner"
+    },
+    {
         "name": "Instagram",
         "url": "https://instagram.com/kosiner.codes"
     },
